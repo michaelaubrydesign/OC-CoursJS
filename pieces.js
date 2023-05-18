@@ -25,17 +25,21 @@ function genererPieces(pieces){
         descriptionElement.innerText = article.description ?? "Pas de description pour le moment.";
         const stockElement = document.createElement("p");
         stockElement.innerText = article.disponibilite ? "En stock" : "Rupture de stock";
+        //Code ajouté
+        const avisBouton = document.createElement("button");
+        avisBouton.dataset.id = article.id;
+        avisBouton.textContent = "Afficher les avis";
         
         // On rattache la balise article a la section Fiches
         sectionFiches.appendChild(pieceElement);
-        // On rattache l’image à pieceElement (la balise article)
         pieceElement.appendChild(imageElement);
         pieceElement.appendChild(nomElement);
         pieceElement.appendChild(prixElement);
         pieceElement.appendChild(categorieElement);
-        //Ajout des éléments au DOM pour l'exercice
         pieceElement.appendChild(descriptionElement);
         pieceElement.appendChild(stockElement);
+        //Code aJouté
+        pieceElement.appendChild(avisBouton);
     
      }
      ajoutListenersAvis();
@@ -97,7 +101,7 @@ console.log(noms)
 //Création de l'en-tête
 
 const pElement = document.createElement('p')
-pElement.innerText = "Pièces abordables :";
+pElement.innerText = "Pièces abordables";
 //Création de la liste
 const abordablesElements = document.createElement('ul');
 //Ajout de chaque nom à la liste
@@ -131,7 +135,7 @@ for(let i=0 ; i < nomsDisponibles.length ; i++){
 }
 
 const pElementDisponible = document.createElement('p')
-pElementDisponible.innerText = "Pièces disponibles :";
+pElementDisponible.innerText = "Pièces disponibles:";
 document.querySelector('.disponibles').appendChild(pElementDisponible).appendChild(disponiblesElement)
 
 const inputPrixMax = document.querySelector('#prix-max')
